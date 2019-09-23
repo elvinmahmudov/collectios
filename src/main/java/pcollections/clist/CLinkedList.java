@@ -50,7 +50,7 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
     }
 
     @Override
-    public CList<I> prepend(I i) {
+    public CLinkedList<I> prepend(I i) {
         return new CLinkedList<>(i, this);
     }
 
@@ -64,8 +64,14 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
     }
 
     @Override
-    public CList<I> prependTo(int i, I i2) {
-        return null;
+    public CLinkedList<I> prependTo(int index, I e) {
+        if (index < 0 || index > length) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            return prepend(e);
+        }
+        return new CLinkedList<>(firstItem, restItems.prependTo(index - 1, e));
     }
 
     @Override

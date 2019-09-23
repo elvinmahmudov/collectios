@@ -71,7 +71,11 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
 
     @Override
     public ListIterator<I> listIterator(int index) {
-        return null;
+        if (index < ZERO || index > length) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        return new CLinkedListIterator<>(index, subCList(index));
     }
 
     @Override

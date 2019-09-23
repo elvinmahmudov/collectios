@@ -1,6 +1,7 @@
 package pcollections.cmap;
 
 import pcollections.CCollection;
+import pcollections.clist.CLinkedList;
 
 import java.util.AbstractMap;
 import java.util.AbstractSet;
@@ -98,5 +99,13 @@ public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V
             i++;
         }
         return -1;
+    }
+
+    private CCollection<Entry<K, V>> getEntries(final int hash) {
+        CCollection<Entry<K, V>> entries = intMap.get(hash);
+        if (entries == null) {
+            return CLinkedList.empty();
+        }
+        return entries;
     }
 }

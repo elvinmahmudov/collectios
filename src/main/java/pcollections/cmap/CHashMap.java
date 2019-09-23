@@ -90,7 +90,20 @@ public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V
 
     @Override
     public CMap<K, V> delete(K key) {
-        return null;
+        CCollection<Entry<K, V>> entries = getEntries(key.hashCode());
+        int i = getKeyIndex(entries, key);
+        if (i == -1) {
+            return this;
+        }
+        int hashCode0 = hashCode(entries);
+        entries = entries.delete(i);
+        if (entries.size() == 0) {
+            return new CHashMap2<>(intMap.delete(key.hashCode()),
+                    length - 1, hashCode - hashCode0);
+        }
+
+        return new CHashMap2<>(intMap.add(key.hashCode(), entries),
+                length - 1, hashCode - hashCode0 + hashCode(entries));
     }
 
     @Override

@@ -3,7 +3,9 @@ package pcollections.cmap;
 import pcollections.CCollection;
 
 import java.util.AbstractMap;
+import java.util.AbstractSet;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -36,7 +38,35 @@ public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V
 
     @Override
     public Set<Entry<K, V>> entrySet() {
-        return null;
+        if (entrySet == null) {
+            entrySet = new AbstractSet<>() {
+
+                @Override
+                public int size() {
+                    return length;
+                }
+
+                @Override
+                public Iterator<Entry<K, V>> iterator() {
+                    return new CMapIterator<>(intMap.values().iterator());
+                }
+
+                @Override
+                public int hashCode() {
+                    return hashCode;
+                }
+
+                @Override
+                public boolean contains(final Object e) {
+                    if (!(e instanceof Entry)) {
+                        return false;
+                    }
+                    V value = get(((Entry<?, ?>) e).getKey());
+                    return value != null && value.equals(((Entry<?, ?>) e).getValue());
+                }
+            };
+        }
+        return entrySet;
     }
 
     @Override

@@ -138,12 +138,28 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
     }
 
     @Override
-    public CList<I> subCList(int start, int end) {
-        return null;
+    public CLinkedList<I> subCList(int fromIndex, int toIndex) {
+        if (fromIndex < ZERO || toIndex > length || fromIndex > toIndex) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (fromIndex == toIndex) {
+            return empty();
+        }
+
+        if (toIndex == length) {
+            return subCList(fromIndex);
+        }
+
+        if (restItems != null && fromIndex == ZERO) {
+            return new CLinkedList<>(firstItem, restItems.subCList(ZERO, toIndex - ONE));
+        }
+
+        return restItems.subCList(fromIndex - 1, toIndex - 1);
     }
 
     @Override
-    public CList<I> subCList(int start) {
+    public CLinkedList<I> subCList(int start) {
         return null;
     }
 }

@@ -6,6 +6,7 @@ import java.util.AbstractSequentialList;
 import java.util.Collection;
 import java.util.ListIterator;
 
+import static pcollections.enums.Constants.ONE;
 import static pcollections.enums.Constants.ZERO;
 
 
@@ -25,6 +26,13 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
         firstItem = null;
         restItems = null;
         length = ZERO;
+    }
+
+    private CLinkedList(final I firstItem, final CLinkedList<I> restItems) {
+        this.firstItem = firstItem;
+        this.restItems = restItems;
+
+        length = restItems.length + ONE;
     }
 
     public static <E> CLinkedList<E> empty() {

@@ -36,6 +36,10 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
         length = restItems.length + ONE;
     }
 
+    public static <I> CLinkedList<I> getInstance(final I i) {
+        return CLinkedList.<I>empty().prepend(i);
+    }
+
     public I getFirstItem() {
         return firstItem;
     }
@@ -129,7 +133,7 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
         if (newRest == restItems) {
             return this;
         }
-        return new CLinkedList<I>(firstItem, newRest);
+        return new CLinkedList<>(firstItem, newRest);
     }
 
     @Override

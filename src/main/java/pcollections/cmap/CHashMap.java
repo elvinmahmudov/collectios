@@ -111,8 +111,12 @@ public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V
     }
 
     @Override
-    public CMap<K, V> deleteAll(Collection<? extends K> keys) {
-        return null;
+    public CHashMap<K, V> deleteAll(Collection<? extends K> keys) {
+        CHashMap<K, V> result = this;
+        for (Object key : keys) {
+            result = result.delete(key);
+        }
+        return result;
     }
 
     private static <K, V> int getKeyIndex(final CCollection<Entry<K, V>> entries, final Object key) {

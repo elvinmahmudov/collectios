@@ -1,10 +1,10 @@
 package pcollections.exception;
 
-public class DoubleInitializationException extends RuntimeException {
+public class EmptyObjectException extends RuntimeException {
 
-    private static final String MESSAGE = "Use getInstance() method to get the single instance of this class";
+    private static final String MESSAGE = "Operation is not allowed on an empty object.";
 
-    public DoubleInitializationException() {
+    public EmptyObjectException() {
         super(MESSAGE);
     }
 }

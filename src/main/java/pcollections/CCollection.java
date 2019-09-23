@@ -13,5 +13,5 @@ public interface CCollection<E> extends Collection<E> {
 
     CCollection<E> deleteAll(Collection<? extends E> list);
 
-    CCollection<E> subList(int start, int end);
+    CCollection<E> subCList(int start, int end);
 }

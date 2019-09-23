@@ -5,6 +5,7 @@ import pcollections.exception.EmptyObjectException;
 
 import java.util.AbstractSequentialList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.ListIterator;
 
 import static pcollections.enums.Constants.ONE;
@@ -34,6 +35,14 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
         this.restItems = restItems;
 
         length = restItems.length + ONE;
+    }
+
+    private static <I> CLinkedList<I> of(final Iterator<? extends I> i) {
+        if (!i.hasNext()) {
+            return empty();
+        }
+        I e = i.next();
+        return CLinkedList.<I>of(i).prepend(e);
     }
 
     public static <I> CLinkedList<I> getInstance(final I i) {

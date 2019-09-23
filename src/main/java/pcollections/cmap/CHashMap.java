@@ -88,4 +88,15 @@ public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V
     public CMap<K, V> deleteAll(Collection<? extends K> keys) {
         return null;
     }
+
+    private static <K, V> int getKeyIndex(final CCollection<Entry<K, V>> entries, final Object key) {
+        int i = 0;
+        for (Entry<K, V> entry : entries) {
+            if (entry.getKey().equals(key)) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
 }

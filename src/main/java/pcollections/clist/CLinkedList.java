@@ -51,7 +51,7 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
 
     @Override
     public CList<I> prepend(I i) {
-        return null;
+        return new CLinkedList<>(i, this);
     }
 
     @Override

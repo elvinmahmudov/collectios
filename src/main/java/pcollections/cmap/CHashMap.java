@@ -79,7 +79,7 @@ public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V
             entries = entries.delete(i);
         }
         entries = entries.prepend(new SimpleImmutableEntry<>(key, value));
-        return new CHashMap2<>(intMap.add(key.hashCode(), entries),
+        return new CHashMap<>(intMap.add(key.hashCode(), entries),
                 length - size0 + entries.size(), hashCode - hashCode0 + hashCode(entries));
     }
 
@@ -98,11 +98,11 @@ public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V
         int hashCode0 = hashCode(entries);
         entries = entries.delete(i);
         if (entries.size() == 0) {
-            return new CHashMap2<>(intMap.delete(key.hashCode()),
+            return new CHashMap<>(intMap.delete(key.hashCode()),
                     length - 1, hashCode - hashCode0);
         }
 
-        return new CHashMap2<>(intMap.add(key.hashCode(), entries),
+        return new CHashMap<>(intMap.add(key.hashCode(), entries),
                 length - 1, hashCode - hashCode0 + hashCode(entries));
     }
 

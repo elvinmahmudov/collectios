@@ -1,4 +1,4 @@
-package pcollections.cmap;
+package ccollection.cmap;
 
 import java.util.Collection;
 import java.util.Map;

@@ -1,7 +1,7 @@
-package pcollections.cset;
+package ccollection.cset;
 
-import pcollections.CCollection;
-import pcollections.cmap.CMap;
+import ccollection.CCollection;
+import ccollection.cmap.CMap;
 
 import java.util.AbstractSet;
 import java.util.Collection;

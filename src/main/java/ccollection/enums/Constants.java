@@ -1,4 +1,4 @@
-package pcollections.enums;
+package ccollection.enums;
 
 public final class Constants {
 

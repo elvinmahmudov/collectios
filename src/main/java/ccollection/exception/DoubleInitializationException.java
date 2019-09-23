@@ -1,4 +1,4 @@
-package pcollections.exception;
+package ccollection.exception;
 
 public class DoubleInitializationException extends RuntimeException {
 

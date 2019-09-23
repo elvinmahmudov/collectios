@@ -1,7 +1,7 @@
-package pcollections.cmap;
+package ccollection.cmap;
 
-import pcollections.CCollection;
-import pcollections.clist.CLinkedList;
+import ccollection.CCollection;
+import ccollection.clist.CLinkedList;
 
 import java.util.Iterator;
 

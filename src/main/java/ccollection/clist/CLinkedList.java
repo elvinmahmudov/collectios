@@ -1,15 +1,15 @@
-package pcollections.clist;
+package ccollection.clist;
 
-import pcollections.exception.DoubleInitializationException;
-import pcollections.exception.EmptyObjectException;
+import ccollection.exception.DoubleInitializationException;
+import ccollection.exception.EmptyObjectException;
 
 import java.util.AbstractSequentialList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.ListIterator;
 
-import static pcollections.enums.Constants.ONE;
-import static pcollections.enums.Constants.ZERO;
+import static ccollection.enums.Constants.ONE;
+import static ccollection.enums.Constants.ZERO;
 
 
 public final class CLinkedList<I> extends AbstractSequentialList<I> implements CList<I> {

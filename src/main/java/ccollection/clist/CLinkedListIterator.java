@@ -1,8 +1,8 @@
-package pcollections.clist;
+package ccollection.clist;
 
 import java.util.ListIterator;
 
-import static pcollections.enums.Constants.ZERO;
+import static ccollection.enums.Constants.ZERO;
 
 public class CLinkedListIterator<I> implements ListIterator<I> {
 

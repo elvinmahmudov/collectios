@@ -1,7 +1,7 @@
-package pcollections.cmap;
+package ccollection.cmap;
 
-import pcollections.CCollection;
-import pcollections.clist.CLinkedList;
+import ccollection.CCollection;
+import ccollection.clist.CLinkedList;
 
 import java.util.AbstractMap;
 import java.util.AbstractSet;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import static pcollections.enums.Constants.ZERO;
+import static ccollection.enums.Constants.ZERO;
 
 
 public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V> {

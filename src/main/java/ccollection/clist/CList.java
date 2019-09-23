@@ -1,6 +1,6 @@
-package pcollections.clist;
+package ccollection.clist;
 
-import pcollections.CCollection;
+import ccollection.CCollection;
 
 import java.util.Collection;
 

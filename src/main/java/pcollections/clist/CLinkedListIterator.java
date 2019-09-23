@@ -1,8 +1,8 @@
-package pcollections.linkedclist;
+package pcollections.clist;
 
 import java.util.ListIterator;
 
-import static pcollections.Constants.ZERO;
+import static pcollections.enums.Constants.ZERO;
 
 public class CLinkedListIterator<I> implements ListIterator<I> {
 
@@ -37,7 +37,7 @@ public class CLinkedListIterator<I> implements ListIterator<I> {
     }
 
     public I previous() {
-        restItems = restItems.subList(index - 1);
+        restItems = restItems.subCList(index - 1);
         return restItems.getFirstItem();
     }
 

@@ -1,6 +1,7 @@
 package pcollections.clist;
 
 import pcollections.exception.DoubleInitializationException;
+import pcollections.exception.EmptyObjectException;
 
 import java.util.AbstractSequentialList;
 import java.util.Collection;
@@ -63,8 +64,8 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
     }
 
     @Override
-    public CList<I> prependAll(Collection<? extends I> list) {
-        CList<I> result = this;
+    public CLinkedList<I> prependAll(Collection<? extends I> list) {
+        CLinkedList<I> result = this;
         for (I i : list) {
             result = result.prepend(i);
         }
@@ -83,8 +84,17 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
     }
 
     @Override
-    public CList<I> prependAll(int i, Collection<? extends I> list) {
-        return null;
+    public CLinkedList<I> prependAll(int i, Collection<? extends I> list) {
+        if (restItems == null) {
+            throw new EmptyObjectException();
+        }
+        if (i < 0 || i > length) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (i == 0) {
+            return prependAll(list);
+        }
+        return new CLinkedList<>(firstItem, restItems.prependAll(i - 1, list));
     }
 
     @Override

@@ -56,7 +56,11 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
 
     @Override
     public CList<I> prependAll(Collection<? extends I> list) {
-        return null;
+        CList<I> result = this;
+        for (I i : list) {
+            result = result.prepend(i);
+        }
+        return result;
     }
 
     @Override

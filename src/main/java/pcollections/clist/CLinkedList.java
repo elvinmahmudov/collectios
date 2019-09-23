@@ -98,8 +98,19 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
     }
 
     @Override
-    public CList<I> delete(I i) {
-        return null;
+    public CLinkedList<I> delete(I i) {
+        if (firstItem == null || restItems == null) {
+            throw new EmptyObjectException();
+        }
+        if (firstItem.equals(i)) {
+            return restItems;
+        }
+
+        CLinkedList<I> newRest = restItems.delete(i);
+        if (newRest == restItems) {
+            return this;
+        }
+        return new CLinkedList<>(firstItem, newRest);
     }
 
     @Override

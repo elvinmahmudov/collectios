@@ -71,7 +71,7 @@ public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V
     }
 
     @Override
-    public CMap<K, V> add(K key, V value) {
+    public CHashMap<K, V> add(K key, V value) {
         CCollection<Entry<K, V>> entries = getEntries(key.hashCode());
         int size0 = entries.size(), hashCode0 = hashCode(entries),
                 i = getKeyIndex(entries, key);
@@ -84,8 +84,12 @@ public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V
     }
 
     @Override
-    public CMap<K, V> addAll(Map<? extends K, ? extends V> map) {
-        return null;
+    public CHashMap<K, V> addAll(Map<? extends K, ? extends V> map) {
+        CHashMap<K, V> result = this;
+        for (Entry<? extends K, ? extends V> entry : map.entrySet()) {
+            result = result.add(entry.getKey(), entry.getValue());
+        }
+        return result;
     }
 
     @Override

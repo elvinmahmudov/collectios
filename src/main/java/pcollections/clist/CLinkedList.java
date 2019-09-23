@@ -46,7 +46,7 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
 
     @Override
     public int size() {
-        return 0;
+        return ZERO;
     }
 
     @Override

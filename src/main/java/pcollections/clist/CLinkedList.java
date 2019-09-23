@@ -134,7 +134,7 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
 
     @Override
     public CList<I> delete(int i) {
-        return null;
+        return delete(get(i));
     }
 
     @Override

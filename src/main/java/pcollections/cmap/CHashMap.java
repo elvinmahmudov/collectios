@@ -72,7 +72,15 @@ public final class CHashMap<K, V> extends AbstractMap<K, V> implements CMap<K, V
 
     @Override
     public CMap<K, V> add(K key, V value) {
-        return null;
+        CCollection<Entry<K, V>> entries = getEntries(key.hashCode());
+        int size0 = entries.size(), hashCode0 = hashCode(entries),
+                i = getKeyIndex(entries, key);
+        if (i != -1) {
+            entries = entries.delete(i);
+        }
+        entries = entries.prepend(new SimpleImmutableEntry<>(key, value));
+        return new CHashMap2<>(intMap.add(key.hashCode(), entries),
+                length - size0 + entries.size(), hashCode - hashCode0 + hashCode(entries));
     }
 
     @Override

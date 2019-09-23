@@ -37,6 +37,14 @@ public final class CLinkedList<I> extends AbstractSequentialList<I> implements C
         length = restItems.length + ONE;
     }
 
+    public static <I> CLinkedList<I> of(final Collection<? extends I> list) {
+        if (list instanceof CLinkedList) {
+            return (CLinkedList<I>) list;
+        }
+
+        return of(list.iterator());
+    }
+
     private static <I> CLinkedList<I> of(final Iterator<? extends I> i) {
         if (!i.hasNext()) {
             return empty();

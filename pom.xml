@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.elvinmahmudov</groupId>
-    <artifactId>ccollections</artifactId>
+    <artifactId>CCollection</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>ccollections</name>
+    <name>CCollection</name>
 
     <build>
         <plugins>

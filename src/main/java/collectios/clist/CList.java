@@ -1,11 +1,11 @@
-package ccollection.clist;
+package collectios.clist;
 
-import ccollection.CCollection;
+import collectios.Collectios;
 
 import java.util.Collection;
 
 
-public interface CList<E> extends CCollection<E>, java.util.List<E> {
+public interface CList<E> extends Collectios<E>, java.util.List<E> {
 
     CList<E> prepend(E e);
 

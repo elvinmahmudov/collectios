@@ -1,15 +1,15 @@
-package ccollection.cmap;
+package collectios.cmap;
 
-import ccollection.CCollection;
-import ccollection.clist.CLinkedList;
+import collectios.Collectios;
+import collectios.clist.CollectioList;
 
 import java.util.Iterator;
 
-public class CMapIterator<E> implements Iterator<E> {
-    private final Iterator<CCollection<E>> i;
-    private CCollection<E> seq = CLinkedList.empty();
+public class CollectioMapIterator<E> implements Iterator<E> {
+    private final Iterator<Collectios<E>> i;
+    private Collectios<E> seq = CollectioList.empty();
 
-    CMapIterator(Iterator<CCollection<E>> i) {
+    CollectioMapIterator(Iterator<Collectios<E>> i) {
         this.i = i;
     }
 

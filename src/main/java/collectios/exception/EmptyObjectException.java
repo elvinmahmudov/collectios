@@ -1,4 +1,4 @@
-package ccollection.exception;
+package collectios.exception;
 
 public class EmptyObjectException extends RuntimeException {
 

@@ -1,4 +1,4 @@
-package ccollection.enums;
+package collectios.enums;
 
 public final class Constants {
 

@@ -1,13 +1,12 @@
-package ccollection.cset;
+package collectios.cset;
 
-import ccollection.CCollection;
+import collectios.Collectios;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 
-public interface CSet<E> extends Set<E>, CCollection<E>, List<E> {
+public interface CSet<E> extends Set<E>, Collectios<E> {
 
     CSet<E> prepend(E e);
 

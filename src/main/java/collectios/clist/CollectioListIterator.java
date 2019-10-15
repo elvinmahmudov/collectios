@@ -1,15 +1,15 @@
-package ccollection.clist;
+package collectios.clist;
 
 import java.util.ListIterator;
 
-import static ccollection.enums.Constants.ZERO;
+import static collectios.enums.Constants.ZERO;
 
-public class CLinkedListIterator<I> implements ListIterator<I> {
+public class CollectioListIterator<I> implements ListIterator<I> {
 
     private int index;
-    private CLinkedList<I> restItems;
+    private CollectioList<I> restItems;
 
-    public CLinkedListIterator(int index, CLinkedList<I> restItems) {
+    public CollectioListIterator(int index, CollectioList<I> restItems) {
         this.index = index;
         this.restItems = restItems;
     }

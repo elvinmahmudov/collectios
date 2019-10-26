@@ -142,7 +142,7 @@ public final class CollectioSet<E> extends AbstractSet<E> implements CSet<E> {
      */
     public CollectioSet delete(final Object e) {
         if (!contains(e)) return this;
-        return new CollectioSet(map.delete(e), hashCode - e.hashCode());
+        return new CollectioSet(map.delete((E) e), hashCode - e.hashCode());
     }
 
     /**

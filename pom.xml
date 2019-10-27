@@ -3,7 +3,7 @@
 
     <groupId>com.github.elvinmahmudov</groupId>
     <artifactId>collectios</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Collectios</name>
@@ -32,7 +32,7 @@
         <url>https://github.com:elvinmahmudov/collectios.git</url>
         <connection>scm:git:git@github.com:elvinmahmudov/collectios.git</connection>
         <developerConnection>scm:git:git@github.com:elvinmahmudov/collectios.git</developerConnection>
-      <tag>collectios-1.1</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>

@@ -1,15 +1,15 @@
-package collectios.clist;
+package com.elvinmahmudov.collectios.clist;
 
-import collectios.exception.DoubleInitializationException;
-import collectios.exception.EmptyObjectException;
+import com.elvinmahmudov.collectios.exception.DoubleInitializationException;
+import com.elvinmahmudov.collectios.exception.EmptyObjectException;
 
 import java.util.AbstractSequentialList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.ListIterator;
 
-import static collectios.enums.Constants.ONE;
-import static collectios.enums.Constants.ZERO;
+import static com.elvinmahmudov.collectios.enums.Constants.ONE;
+import static com.elvinmahmudov.collectios.enums.Constants.ZERO;
 
 
 /**
@@ -17,8 +17,8 @@ import static collectios.enums.Constants.ZERO;
  *
  * @author emahmudov
  */
-public final class CollectioList<I> extends AbstractSequentialList<I> implements CList<I> {
-    private static final CollectioList<Object> SINGLE_INSTANCE = new CollectioList<>();
+public final class CollectiosList<I> extends AbstractSequentialList<I> implements CList<I> {
+    private static final CollectiosList<Object> SINGLE_INSTANCE = new CollectiosList<>();
 
     /**
      * First item in the list
@@ -28,7 +28,7 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
     /**
      * Rest items in the list
      */
-    private final CollectioList<I> restItems;
+    private final CollectiosList<I> restItems;
 
     /**
      * Size of list
@@ -38,7 +38,7 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
     /**
      * Private constructor which is used for empty singleton
      */
-    private CollectioList() {
+    private CollectiosList() {
         if (SINGLE_INSTANCE != null) {
             throw new DoubleInitializationException();
         }
@@ -53,7 +53,7 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
      * @param firstItem
      * @param restItems
      */
-    private CollectioList(final I firstItem, final CollectioList<I> restItems) {
+    private CollectiosList(final I firstItem, final CollectiosList<I> restItems) {
         length = restItems.length + ONE;
 
         this.firstItem = firstItem;
@@ -65,11 +65,11 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
      *
      * @param list
      * @param <I>
-     * @return CollectioList
+     * @return CollectiosList
      */
-    public static <I> CollectioList<I> of(final Collection<? extends I> list) {
-        if (list instanceof CollectioList) {
-            return (CollectioList<I>) list;
+    public static <I> CollectiosList<I> of(final Collection<? extends I> list) {
+        if (list instanceof CollectiosList) {
+            return (CollectiosList<I>) list;
         }
 
         return of(list.iterator());
@@ -80,14 +80,14 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
      *
      * @param i
      * @param <I>
-     * @return CollectioList
+     * @return CollectiosList
      */
-    private static <I> CollectioList<I> of(final Iterator<? extends I> i) {
+    private static <I> CollectiosList<I> of(final Iterator<? extends I> i) {
         if (!i.hasNext()) {
             return empty();
         }
         I e = i.next();
-        return CollectioList.<I>of(i).prepend(e);
+        return CollectiosList.<I>of(i).prepend(e);
     }
 
     /**
@@ -95,20 +95,20 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
      *
      * @param i
      * @param <I>
-     * @return CollectioList
+     * @return CollectiosList
      */
-    public static <I> CollectioList<I> getInstance(final I i) {
-        return CollectioList.<I>empty().prepend(i);
+    public static <I> CollectiosList<I> getInstance(final I i) {
+        return CollectiosList.<I>empty().prepend(i);
     }
 
     /**
      * Method to get empty instance
      *
      * @param <E>
-     * @return CollectioList
+     * @return CollectiosList
      */
-    public static <E> CollectioList<E> empty() {
-        return (CollectioList<E>) SINGLE_INSTANCE;
+    public static <E> CollectiosList<E> empty() {
+        return (CollectiosList<E>) SINGLE_INSTANCE;
     }
 
     /**
@@ -123,9 +123,9 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
     /**
      * Method to get the rest items in the list
      *
-     * @return CollectioList
+     * @return CollectiosList
      */
-    public CollectioList<I> getRestItems() {
+    public CollectiosList<I> getRestItems() {
         return restItems;
     }
 
@@ -158,22 +158,22 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
      * Overridden method from CList to prepend an object to the list
      *
      * @param i
-     * @return CollectioList
+     * @return CollectiosList
      */
     @Override
-    public CollectioList<I> prepend(I i) {
-        return new CollectioList<>(i, this);
+    public CollectiosList<I> prepend(I i) {
+        return new CollectiosList<>(i, this);
     }
 
     /**
      * Overridden method from CList to prepend multiple objects to the list
      *
      * @param list
-     * @return CollectioList
+     * @return CollectiosList
      */
     @Override
-    public CollectioList<I> prependAll(Collection<? extends I> list) {
-        CollectioList<I> result = this;
+    public CollectiosList<I> prependAll(Collection<? extends I> list) {
+        CollectiosList<I> result = this;
         for (I i : list) {
             result = result.prepend(i);
         }
@@ -185,17 +185,17 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
      *
      * @param index
      * @param e
-     * @return CollectioList
+     * @return CollectiosList
      */
     @Override
-    public CollectioList<I> prependTo(int index, I e) {
+    public CollectiosList<I> prependTo(int index, I e) {
         if (index < 0 || index > length) {
             throw new IndexOutOfBoundsException();
         }
         if (index == 0) {
             return prepend(e);
         }
-        return new CollectioList<>(firstItem, restItems.prependTo(index - 1, e));
+        return new CollectiosList<>(firstItem, restItems.prependTo(index - 1, e));
     }
 
     /**
@@ -203,10 +203,10 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
      *
      * @param i
      * @param list
-     * @return CollectioList
+     * @return CollectiosList
      */
     @Override
-    public CollectioList<I> prependAll(int i, Collection<? extends I> list) {
+    public CollectiosList<I> prependAll(int i, Collection<? extends I> list) {
         if (restItems == null) {
             throw new EmptyObjectException();
         }
@@ -216,17 +216,17 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
         if (i == 0) {
             return prependAll(list);
         }
-        return new CollectioList<>(firstItem, restItems.prependAll(i - 1, list));
+        return new CollectiosList<>(firstItem, restItems.prependAll(i - 1, list));
     }
 
     /**
      * Overridden method from CList to delete an object from the list
      *
      * @param i
-     * @return CollectioList
+     * @return CollectiosList
      */
     @Override
-    public CollectioList<I> delete(I i) {
+    public CollectiosList<I> delete(I i) {
         if (firstItem == null || restItems == null) {
             throw new EmptyObjectException();
         }
@@ -234,21 +234,21 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
             return restItems;
         }
 
-        CollectioList<I> newRest = restItems.delete(i);
+        CollectiosList<I> newRest = restItems.delete(i);
         if (newRest == restItems) {
             return this;
         }
-        return new CollectioList<>(firstItem, newRest);
+        return new CollectiosList<>(firstItem, newRest);
     }
 
     /**
      * Overridden method to delete all objects from the list
      *
      * @param list
-     * @return CollectioList
+     * @return CollectiosList
      */
     @Override
-    public CollectioList<I> deleteAll(Collection<? extends I> list) {
+    public CollectiosList<I> deleteAll(Collection<? extends I> list) {
         if (restItems == null) {
             throw new EmptyObjectException();
         }
@@ -259,21 +259,21 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
             return restItems.deleteAll(list);
         }
 
-        CollectioList<I> newRest = restItems.deleteAll(list);
+        CollectiosList<I> newRest = restItems.deleteAll(list);
         if (newRest == restItems) {
             return this;
         }
-        return new CollectioList<>(firstItem, newRest);
+        return new CollectiosList<>(firstItem, newRest);
     }
 
     /**
      * Overridden method to delete object by index
      *
      * @param i
-     * @return CollectioList
+     * @return CollectiosList
      */
     @Override
-    public CollectioList<I> delete(int i) {
+    public CollectiosList<I> delete(int i) {
         return delete(get(i));
     }
 
@@ -282,10 +282,10 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
      *
      * @param fromIndex
      * @param toIndex
-     * @return CollectioList
+     * @return CollectiosList
      */
     @Override
-    public CollectioList<I> subCList(int fromIndex, int toIndex) {
+    public CollectiosList<I> subCList(int fromIndex, int toIndex) {
         if (fromIndex < ZERO || toIndex > length || fromIndex > toIndex) {
             throw new IndexOutOfBoundsException();
         }
@@ -299,7 +299,7 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
         }
 
         if (restItems != null && fromIndex == ZERO) {
-            return new CollectioList<>(firstItem, restItems.subCList(ZERO, toIndex - ONE));
+            return new CollectiosList<>(firstItem, restItems.subCList(ZERO, toIndex - ONE));
         }
 
         return restItems.subCList(fromIndex - 1, toIndex - 1);
@@ -309,10 +309,10 @@ public final class CollectioList<I> extends AbstractSequentialList<I> implements
      * Overridden method from CList to create a sublist starting from index
      *
      * @param fromIndex
-     * @return CollectioList
+     * @return CollectiosList
      */
     @Override
-    public CollectioList<I> subCList(int fromIndex) {
+    public CollectiosList<I> subCList(int fromIndex) {
         if (restItems == null) {
             throw new EmptyObjectException();
         }

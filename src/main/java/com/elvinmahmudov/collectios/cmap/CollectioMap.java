@@ -1,7 +1,7 @@
-package collectios.cmap;
+package com.elvinmahmudov.collectios.cmap;
 
-import collectios.Collectios;
-import collectios.clist.CollectioList;
+import com.elvinmahmudov.collectios.clist.Collectios;
+import com.elvinmahmudov.collectios.clist.CollectiosList;
 
 import java.util.AbstractMap;
 import java.util.AbstractSet;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import static collectios.enums.Constants.ZERO;
+import static com.elvinmahmudov.collectios.enums.Constants.ZERO;
 
 
 /**
@@ -238,7 +238,7 @@ public final class CollectioMap<K, V> extends AbstractMap<K, V> implements CMap<
     private Collectios<Entry<K, V>> getEntries(final int hash) {
         Collectios<Entry<K, V>> entries = integerMap.get(hash);
         if (entries == null) {
-            return CollectioList.empty();
+            return CollectiosList.empty();
         }
         return entries;
     }

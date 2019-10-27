@@ -1,4 +1,4 @@
-package collectios.cmap;
+package com.elvinmahmudov.collectios.cmap;
 
 import java.util.Collection;
 import java.util.Map;

@@ -1,13 +1,13 @@
-package collectios.cmap;
+package com.elvinmahmudov.collectios.cmap;
 
-import collectios.Collectios;
-import collectios.clist.CollectioList;
+import com.elvinmahmudov.collectios.clist.Collectios;
+import com.elvinmahmudov.collectios.clist.CollectiosList;
 
 import java.util.Iterator;
 
 public class CollectioMapIterator<E> implements Iterator<E> {
     private final Iterator<Collectios<E>> i;
-    private Collectios<E> seq = CollectioList.empty();
+    private Collectios<E> seq = CollectiosList.empty();
 
     CollectioMapIterator(Iterator<Collectios<E>> i) {
         this.i = i;

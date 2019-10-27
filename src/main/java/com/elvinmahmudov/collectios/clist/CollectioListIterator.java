@@ -1,15 +1,15 @@
-package collectios.clist;
+package com.elvinmahmudov.collectios.clist;
 
 import java.util.ListIterator;
 
-import static collectios.enums.Constants.ZERO;
+import static com.elvinmahmudov.collectios.enums.Constants.ZERO;
 
 public class CollectioListIterator<I> implements ListIterator<I> {
 
     private int index;
-    private CollectioList<I> restItems;
+    private CollectiosList<I> restItems;
 
-    public CollectioListIterator(int index, CollectioList<I> restItems) {
+    public CollectioListIterator(int index, CollectiosList<I> restItems) {
         this.index = index;
         this.restItems = restItems;
     }

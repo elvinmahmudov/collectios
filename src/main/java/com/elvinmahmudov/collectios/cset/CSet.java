@@ -1,6 +1,6 @@
-package collectios.cset;
+package com.elvinmahmudov.collectios.cset;
 
-import collectios.Collectios;
+import com.elvinmahmudov.collectios.clist.Collectios;
 
 import java.util.Collection;
 import java.util.Set;

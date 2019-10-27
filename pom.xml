@@ -2,11 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.elvinmahmudov</groupId>
-    <artifactId>collectio</artifactId>
+    <artifactId>collectios</artifactId>
     <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Collectio</name>
+    <name>Collectios</name>
 
 
     <description>Unchangeable collections</description>

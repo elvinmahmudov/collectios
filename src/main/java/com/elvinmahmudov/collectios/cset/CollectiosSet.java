@@ -1,7 +1,7 @@
-package collectios.cset;
+package com.elvinmahmudov.collectios.cset;
 
-import collectios.Collectios;
-import collectios.cmap.CMap;
+import com.elvinmahmudov.collectios.clist.Collectios;
+import com.elvinmahmudov.collectios.cmap.CMap;
 
 import java.util.AbstractSet;
 import java.util.Collection;
@@ -16,29 +16,29 @@ import java.util.Set;
  * @param <E>
  * @author emahmudov
  */
-public final class CollectioSet<E> extends AbstractSet<E> implements CSet<E> {
+public final class CollectiosSet<E> extends AbstractSet<E> implements CSet<E> {
 
     private static final Set<Object> EMPTY = new HashSet<>();
     private final CMap<E, Object> map;
     private final int hashCode;
 
-    private CollectioSet(final CMap<E, Object> map, final int hashCode) {
+    private CollectiosSet(final CMap<E, Object> map, final int hashCode) {
         this.map = map;
         this.hashCode = hashCode;
     }
 
-    public static <E> CollectioSet from(final CMap<E, ?> map) {
-        return new CollectioSet(map, map.keySet().hashCode());
+    public static <E> CollectiosSet from(final CMap<E, ?> map) {
+        return new CollectiosSet(map, map.keySet().hashCode());
     }
 
     /**
      * Empty set
      *
      * @param <E>
-     * @return CollectioSet
+     * @return CollectiosSet
      */
-    public static <E> CollectioSet<E> empty() {
-        return (CollectioSet<E>) EMPTY;
+    public static <E> CollectiosSet<E> empty() {
+        return (CollectiosSet<E>) EMPTY;
     }
 
     /**
@@ -46,31 +46,31 @@ public final class CollectioSet<E> extends AbstractSet<E> implements CSet<E> {
      *
      * @param e
      * @param <E>
-     * @return CollectioSet
+     * @return CollectiosSet
      */
-    public static <E> CollectioSet<E> getInstance(final E e) {
-        return CollectioSet.<E>empty().prepend(e);
+    public static <E> CollectiosSet<E> getInstance(final E e) {
+        return CollectiosSet.<E>empty().prepend(e);
     }
 
     /**
-     * Make CollectioSet from any Java Collection
+     * Make CollectiosSet from any Java Collection
      *
      * @param list
      * @param <E>
-     * @return CollectioSet
+     * @return CollectiosSet
      */
-    public static <E> CollectioSet<E> from(final Collection<? extends E> list) {
-        return CollectioSet.<E>empty().prependAll(list);
+    public static <E> CollectiosSet<E> from(final Collection<? extends E> list) {
+        return CollectiosSet.<E>empty().prependAll(list);
     }
 
-    public static <E> CollectioSet from(final CMap<E, ?> map, final Collection<? extends E> list) {
+    public static <E> CollectiosSet from(final CMap<E, ?> map, final Collection<? extends E> list) {
         return from(map).prependAll(list);
     }
 
     /**
-     * Get CollectioSet iterator
+     * Get CollectiosSet iterator
      *
-     * @return CollectioSet
+     * @return CollectiosSet
      */
     @Override
     public Iterator<E> iterator() {
@@ -82,9 +82,9 @@ public final class CollectioSet<E> extends AbstractSet<E> implements CSet<E> {
      *
      * @param list
      * @param index
-     * @return CollectioSet
+     * @return CollectiosSet
      */
-    public CollectioSet addAllItems(int index, Collection<? extends E> list) {
+    public CollectiosSet addAllItems(int index, Collection<? extends E> list) {
         CMap<E, Object> map = this.map;
         for (E e : list) map = map.add(e, "YES");
         return from(map);
@@ -128,30 +128,30 @@ public final class CollectioSet<E> extends AbstractSet<E> implements CSet<E> {
      * Prepend given elemnt to the set
      *
      * @param e
-     * @return CollectioSet
+     * @return CollectiosSet
      */
-    public CollectioSet prepend(final E e) {
-        return new CollectioSet(map.add(e, null), hashCode + e.hashCode());
+    public CollectiosSet prepend(final E e) {
+        return new CollectiosSet(map.add(e, null), hashCode + e.hashCode());
     }
 
     /**
      * Delete element
      *
      * @param e
-     * @return CollectioSet
+     * @return CollectiosSet
      */
-    public CollectioSet delete(final Object e) {
+    public CollectiosSet delete(final Object e) {
         if (!contains(e)) return this;
-        return new CollectioSet(map.delete((E) e), hashCode - e.hashCode());
+        return new CollectiosSet(map.delete((E) e), hashCode - e.hashCode());
     }
 
     /**
      * Delete element
      *
      * @param e
-     * @return CollectioSet
+     * @return CollectiosSet
      */
-    public CollectioSet delete(int e) {
+    public CollectiosSet delete(int e) {
         return null;
     }
 
@@ -161,7 +161,7 @@ public final class CollectioSet<E> extends AbstractSet<E> implements CSet<E> {
      * @param list
      * @return
      */
-    public CollectioSet prependAll(final Collection<? extends E> list) {
+    public CollectiosSet prependAll(final Collection<? extends E> list) {
         CMap<E, Object> map = this.map;
         for (E e : list)
             map = map.add(e, null);
@@ -172,9 +172,9 @@ public final class CollectioSet<E> extends AbstractSet<E> implements CSet<E> {
      * Delete all collection from given Set
      *
      * @param list
-     * @return CollectioSet
+     * @return CollectiosSet
      */
-    public CollectioSet deleteAll(final Collection<? extends E> list) {
+    public CollectiosSet deleteAll(final Collection<? extends E> list) {
         CMap<E, Object> map = this.map.deleteAll(list);
         return from(map);
     }
@@ -186,7 +186,6 @@ public final class CollectioSet<E> extends AbstractSet<E> implements CSet<E> {
      * @param end
      * @return Collectios
      */
-    @Override
     public Collectios<E> subCList(int start, int end) {
         return null;
     }

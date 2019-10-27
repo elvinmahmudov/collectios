@@ -1,4 +1,4 @@
-package collectios;
+package com.elvinmahmudov.collectios.clist;
 
 import java.util.Collection;
 

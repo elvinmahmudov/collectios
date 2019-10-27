@@ -1,4 +1,4 @@
-package collectios.enums;
+package com.elvinmahmudov.collectios.enums;
 
 public final class Constants {
 

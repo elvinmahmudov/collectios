@@ -1,4 +1,4 @@
-package collectios.exception;
+package com.elvinmahmudov.collectios.exception;
 
 public class EmptyObjectException extends RuntimeException {
 
